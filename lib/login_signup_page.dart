@@ -10,7 +10,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Trade Track"),
+        title: Text('Trade Track'),
       ),
       body: Container(
         child: Stack(
@@ -32,6 +32,20 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     return Container(
       height: 0,
       width: 0,
+    );
+  }
+
+  Widget showLogin() {
+    return new Hero(
+      tag: 'hero',
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
+        child: CircleAvatar(
+          backgroundColor: Colors.transparent,
+          radius: 48.0,
+          child: Image.asset('assets/demo_launch_icon.png'),
+        ),
+      ),
     );
   }
 }
