@@ -6,7 +6,7 @@ import 'package:tradetrack/login_signup_page.dart';
 enum AuthStatus { NOT_DETERMINED, NOT_SIGNED_IN, SIGNED_IN }
 
 class RootPage extends StatefulWidget {
-  RootPage(this.auth);
+  RootPage({this.auth});
 
   final BaseAuth auth;
 
@@ -76,5 +76,14 @@ class _RootPageState extends State<RootPage> {
       authStatus = AuthStatus.NOT_SIGNED_IN;
       _userId = "";
     });
+  }
+
+  Widget buildWaitingScreen() {
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }
