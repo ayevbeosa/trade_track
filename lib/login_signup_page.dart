@@ -128,4 +128,22 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       _isLoginForm = !_isLoginForm;
     });
   }
+
+  Widget showErrorMessage() {
+    if (_errorMessage.length > 0 && _errorMessage != null) {
+      return Text(
+        _errorMessage,
+        style: TextStyle(
+          fontSize: 13.0,
+          color: Colors.red,
+          height: 1.0,
+          fontWeight: FontWeight.w300,
+        ),
+      );
+    } else {
+      return Container(
+        height: 0.0,
+      );
+    }
+  }
 }
