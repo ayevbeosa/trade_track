@@ -48,4 +48,24 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       ),
     );
   }
+
+  Widget showEmailInput() {
+    return Padding(
+      padding: EdgeInsets.only(top: 100.0),
+      child: TextFormField(
+        maxLines: 1,
+        keyboardType: TextInputType.emailAddress,
+        autofocus: false,
+        decoration: InputDecoration(
+          hintText: 'Email',
+          icon: Icon(
+            Icons.email,
+            color: Colors.blueGrey,
+          ),
+        ),
+        validator: (value) => value.isEmpty ? 'Field is required' : null,
+        onSaved: (value) => _email = value.trim(),
+      ),
+    );
+  }
 }
