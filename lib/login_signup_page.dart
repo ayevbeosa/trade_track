@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class LoginSignUpPage extends StatelessWidget {
+class LoginSignUpPage extends StatefulWidget {
+  @override
+  _LoginSignUpPageState createState() => _LoginSignUpPageState();
+}
+
+class _LoginSignUpPageState extends State<LoginSignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,5 +17,4 @@ class LoginSignUpPage extends StatelessWidget {
       ),
     );
   }
-
 }
