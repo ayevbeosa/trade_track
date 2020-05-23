@@ -22,4 +22,16 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       ),
     );
   }
+
+  Widget showCircularProgress() {
+    if (_isLoading) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    return Container(
+      height: 0,
+      width: 0,
+    );
+  }
 }
