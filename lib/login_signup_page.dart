@@ -118,7 +118,14 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
           fontWeight: FontWeight.w300,
         ),
       ),
-      onPressed: toogleFormMode,
+      onPressed: toggleFormMode,
     );
+  }
+
+  void toggleFormMode() {
+    resetForm();
+    setState(() {
+      _isLoginForm = !_isLoginForm;
+    });
   }
 }
