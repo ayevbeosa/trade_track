@@ -13,7 +13,12 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         title: Text("Trade Track"),
       ),
       body: Container(
-        child: Text("Something Something"),
+        child: Stack(
+          children: <Widget>[
+            showForm(),
+            showCircularProgress(),
+          ],
+        ),
       ),
     );
   }
