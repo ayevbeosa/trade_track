@@ -34,4 +34,22 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Container();
   }
+
+  void loginCallback() {
+    widget.auth.getCurrentUser().then((user) {
+      setState(() {
+        _userId = user.uid.toString();
+      });
+    });
+    setState(() {
+      authStatus = AuthStatus.SIGNED_IN;
+    });
+  }
+
+  void logoutCallback() {
+    setState(() {
+      authStatus = AuthStatus.NOT_SIGNED_IN;
+      _userId = "";
+    });
+  }
 }
