@@ -6,7 +6,6 @@ class LoginSignUpPage extends StatefulWidget {
 }
 
 class _LoginSignUpPageState extends State<LoginSignUpPage> {
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -18,7 +17,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       body: Container(
         child: Stack(
           children: <Widget>[
-            showForm(),
+            _showForm(),
             showCircularProgress(),
           ],
         ),
@@ -38,7 +37,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     );
   }
 
-  Widget showLogin() {
+  Widget showLogo() {
     return new Hero(
       tag: 'hero',
       child: Padding(
@@ -148,5 +147,24 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         height: 0.0,
       );
     }
+  }
+
+  Widget _showForm() {
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      child: Form(
+          key: _formKey,
+          child: ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              showLogo(),
+              showEmailInput(),
+              showPasswordInput(),
+              showPrimaryButton(),
+              showSecondaryButton(),
+              showErrorMessage(),
+            ],
+          )),
+    );
   }
 }
