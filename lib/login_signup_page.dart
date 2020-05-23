@@ -88,4 +88,37 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       ),
     );
   }
+
+  Widget showPrimaryButton() {
+    return Padding(
+      padding: EdgeInsets.only(top: 45.0),
+      child: SizedBox(
+        height: 40.0,
+        child: RaisedButton(
+          elevation: 5.0,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          color: Colors.blue,
+          child: Text(
+            _isLoginForm ? 'Login' : 'Create account',
+            style: TextStyle(fontSize: 20.0, color: Colors.white),
+          ),
+          onPressed: validateAndSubmit,
+        ),
+      ),
+    );
+  }
+
+  Widget showSecondaryButton() {
+    return FlatButton(
+      child: Text(
+        _isLoginForm ? 'Create an account' : 'Have an account? Sign in',
+        style: TextStyle(
+          fontSize: 18.0,
+          fontWeight: FontWeight.w300,
+        ),
+      ),
+      onPressed: toogleFormMode,
+    );
+  }
 }
