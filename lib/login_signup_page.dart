@@ -92,7 +92,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         if (userId.length > 0 && userId != null && _isLoginForm) {
           widget.loginCallback();
         }
-      } catch(e) {
+      } catch (e) {
         print('Error: $e');
         setState(() {
           _isLoading = false;
