@@ -68,4 +68,24 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       ),
     );
   }
+
+  Widget showPasswordInput() {
+    return Padding(
+      padding: EdgeInsets.only(top: 15.0),
+      child: TextFormField(
+        maxLines: 1,
+        obscureText: true,
+        autofocus: false,
+        decoration: InputDecoration(
+          hintText: 'Password',
+          icon: Icon(
+            Icons.lock,
+            color: Colors.blueGrey,
+          ),
+        ),
+        validator: (value) => value.isEmpty ? 'Field is required' : null,
+        onSaved: (value) => _password = value.trim(),
+      ),
+    );
+  }
 }
