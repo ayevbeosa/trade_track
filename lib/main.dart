@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'TradeTrack'),
     );
   }
 }
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           Container(
             child: RaisedButton(
-              child: const Text('Test registration'),
+              child: const Text('Register'),
               onPressed: () => _pushPage(context, RegisterPage()),
             ),
             padding: const EdgeInsets.all(16),
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             child: RaisedButton(
-              child: const Text('Test SignIn/SignOut'),
+              child: const Text('SignIn'),
               onPressed: () => _pushPage(context, SignInPage()),
             ),
             padding: const EdgeInsets.all(16),
