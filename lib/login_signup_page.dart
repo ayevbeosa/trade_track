@@ -165,7 +165,15 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
             color: Colors.blueGrey,
           ),
         ),
-        validator: (value) => value.isEmpty ? 'Field is required' : null,
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Field is required';
+          }
+          if (value.length < 6) {
+            return 'Password should be at least 6 characters';
+          }
+          return null;
+        },
         onSaved: (value) => _password = value.trim(),
       ),
     );
