@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
 
 class LoginSignUpPage extends StatefulWidget {
+  LoginSignUpPage(this.auth, this.loginCallback)
+
+  final BaseAuth auth;
+  final VoidCallback loginCallback;
+
   @override
   _LoginSignUpPageState createState() => _LoginSignUpPageState();
 }
 
 class _LoginSignUpPageState extends State<LoginSignUpPage> {
   final _formKey = GlobalKey<FormState>();
+
+  String _email;
+  String _password;
+  String _errorMessage;
+
+  bool _isLoginForm;
+  bool _isLoading;
+
+  @override
+  void initState() {
+    _errorMessage = "";
+    _isLoading = false;
+    _isLoginForm = true;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +55,64 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       height: 0,
       width: 0,
     );
+  }
+
+  // Check if form is valid
+  bool validateAndSave() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  // Login or Sign up
+  void validateAndSubmit() async {
+    setState(() {
+      _errorMessage = "";
+      _isLoading = true;
+    });
+    if (validateAndSave()) {
+      String userId = "";
+      try {
+        if (_isLoginForm) {
+          userId = await widget.auth.signIn(_email, _password);
+          print('Signed in: $userId');
+        } else {
+          userId = await widget.auth.signUp(_email, _password);
+          // widget.auth.sendEmailVerification();
+          // _showVerifyEmailSentDialog();
+          print('Signed up user: $userId');
+        }
+        setState(() {
+          _isLoading = false;
+        });
+
+        if (userId.length > 0 && userId != null && _isLoginForm) {
+          widget.loginCallback();
+        }
+      } catch(e) {
+        print('Error: $e');
+        setState(() {
+          _isLoading = false;
+          _errorMessage = e.message;
+          _formKey.currentState.reset();
+        });
+      }
+    }
+  }
+
+  void resetForm() {
+    _formKey.currentState.reset();
+    _errorMessage = "";
+  }
+
+  void toggleFormMode() {
+    resetForm();
+    setState(() {
+      _isLoginForm = !_isLoginForm;
+    });
   }
 
   Widget showLogo() {
@@ -122,13 +200,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       ),
       onPressed: toggleFormMode,
     );
-  }
-
-  void toggleFormMode() {
-    resetForm();
-    setState(() {
-      _isLoginForm = !_isLoginForm;
-    });
   }
 
   Widget showErrorMessage() {
