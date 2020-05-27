@@ -71,11 +71,11 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
 
   // Login or Sign up
   void validateAndSubmit() async {
-    setState(() {
-      _errorMessage = "";
-      _isLoading = true;
-    });
     if (validateAndSave()) {
+      setState(() {
+        _errorMessage = "";
+        _isLoading = true;
+      });
       String userId = "";
       try {
         if (_isLoginForm) {
@@ -99,7 +99,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         setState(() {
           _isLoading = false;
           _errorMessage = e.message;
-          _formKey.currentState.reset();
+//          _formKey.currentState.reset();
         });
       }
     }
@@ -121,10 +121,10 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     return new Hero(
       tag: 'hero',
       child: Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
+        padding: EdgeInsets.only(top: 45.0),
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 48.0,
+          radius: 50.0,
           child: Image.asset('assets/demo_launch_icon.png'),
         ),
       ),
@@ -133,7 +133,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
 
   Widget showEmailInput() {
     return Padding(
-      padding: EdgeInsets.only(top: 100.0),
+      padding: EdgeInsets.only(top: 70.0),
       child: TextFormField(
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,
