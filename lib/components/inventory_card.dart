@@ -22,11 +22,14 @@ class InventoryCard extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                    border: Border.all(
-                      color: product.quantity > 0 ? Colors.white : Colors.red,
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(5.0),),),
+                  border: Border.all(
+                    color: product.quantity > 0 ? Colors.white : Colors.red,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(5.0),
+                  ),
+                ),
                 child: Text(
                   '${product.quantity}',
                   style: TextStyle(
