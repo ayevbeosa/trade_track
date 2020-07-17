@@ -33,3 +33,4 @@ Runner/GeneratedPluginRegistrant.*
 
 # Firebase
 Runner.xcworkspace/GoogleService-Info.plist
+Runner.xcworkspace/ios_firebase_json.txt
